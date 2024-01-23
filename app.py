@@ -12,6 +12,10 @@ load_dotenv()
 app = Flask(__name__)
 
 
+@app.route("/health")
+def health():
+    return {}
+
 
 @app.route("/sendMagic", methods = ["POST"])
 def sendMagic():
