@@ -7,6 +7,7 @@ log = logging.Logger(__name__)
 
 class VerifyMail(Base):
     def sendVerificationMail(self, email, code, service):
+        log.info("Generating Email")
         msg = EmailMessage()
 
         msg["Subject"] = f"Verify your mail for {service}"
