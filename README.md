@@ -28,14 +28,15 @@ At the time of writing this with a normal HOSTINGER plan I had 3000/Mails/Day wh
 1) Need a Redis instance.
    > docker pull redis
 
-2) Setup this project 
+2) Setup this project <br />
 `git clone git@github.com/ashweenmankash/magiclinkgenerator.git`
-> python -m venv env
-> source ./env/bin/activate
-> pip install -r requirements.txt
+` python -m venv env `
+` source ./env/bin/activate `
+` pip install -r requirements.txt `
 
 3) Setup your .env files.
 
+`
   BROKER=redis://localhost:6379  
   SECRET= a secret that is shared between you and your service
   SMTP_SERVER=smtp.hostinger.com
@@ -43,9 +44,9 @@ At the time of writing this with a normal HOSTINGER plan I had 3000/Mails/Day wh
   MAIL_ADDRESS= your email address
   MAIL_PASSWORD= your email's password
   SERVICE_NAME= Your business name 
-
+`
 4) Run!
-> python -m app
+` python -m app `
 
 ## You can deploy this app directly on Railway
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/Coitf7?referralCode=7TbvLJ)
