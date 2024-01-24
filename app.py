@@ -6,11 +6,12 @@ from time import sleep
 import traceback
 import os
 from dotenv import load_dotenv
-
+import logging
 load_dotenv()
 
 app = Flask(__name__)
 
+log = logging.Logger(__name__)
 
 @app.route("/health")
 def health():
@@ -43,20 +44,19 @@ def sendMagic():
             return {"msg": resp.get("msg")}
         return {"msg": "Code Sent"}
     except Exception as e:
-        print(traceback.format_exc())
+        log.error(traceback.format_exc())
         return {"error": True, "msg": "Something went wrong"}
 
 
 @app.route("/verifyCode", methods=["POST"])
 def verifyCode():
-    print("Verify Code")
     payload = request.json
 
     email = payload.get("email")
     code = payload.get("code")
     access_key = payload.get("access_key")
 
-    if access_key != os.getenv("mail_secret"):
+    if access_key != os.getenv("SECRET"):
         return {"msg": "Invalid Access Key", "verification_status": False}
 
     sleep(1)

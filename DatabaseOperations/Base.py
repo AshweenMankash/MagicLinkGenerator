@@ -11,5 +11,5 @@ class Base:
             db = 10
         else:
             raise Exception("Not Implemented")
-        self._redis_url = os.getenv("broker") + f"/{db}"
+        self._redis_url = os.getenv("BROKER") + f"/{db}"
         self._db: redis.Redis = redis.Redis.from_url(self._redis_url)

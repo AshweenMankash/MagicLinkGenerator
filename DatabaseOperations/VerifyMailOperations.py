@@ -13,16 +13,10 @@ class VerifyMailOperations(Base):
 
     def verify_mail_data_for_verification(self, email, code):
         data = self._db.hget(email, key="code")
-        print("WTF!")
-        print(data)
-        
         if data is None:
             return {"msg": "Code Expired", "verification_status": False}
         data = data.decode()
-        print(data)
         if data is not None and data == code:
             resp = self._db.delete(email)
-            print("WTF!")
-            print(resp)
             return {"msg": "Code Verified", "verification_status": True}
         return {"msg": "Incorrect Code", "verification_status": False}
