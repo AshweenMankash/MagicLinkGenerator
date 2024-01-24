@@ -29,7 +29,7 @@ At the time of writing this with a normal HOSTINGER plan I had 3000/Mails/Day wh
    > docker pull redis
 
 2) Setup this project 
-> git clone git@github.com/ashweenmankash/magiclinkgenerator.git
+`git clone git@github.com/ashweenmankash/magiclinkgenerator.git`
 > python -m venv env
 > source ./env/bin/activate
 > pip install -r requirements.txt
