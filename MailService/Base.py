@@ -17,7 +17,7 @@ class Base:
         password = os.getenv("MAIL_PASSWORD")
         auth_key = os.getenv("SECRET")
 
-        self.s = smtplib.SMTP(host=smtp_server, port=port)
+        self.s = smtplib.SMTP_SSL(host=smtp_server, port=port)
 
         self.s.login(user=self.email, password=password)
 
