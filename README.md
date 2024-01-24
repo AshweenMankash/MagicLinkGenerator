@@ -36,15 +36,13 @@ At the time of writing this with a normal HOSTINGER plan I had 3000/Mails/Day wh
 
 3) Setup your .env files. <br />
 
-`
-  BROKER=redis://localhost:6379   <br />
-  SECRET= a secret that is shared between you and your service <br />
-  SMTP_SERVER=smtp.hostinger.com <br />
-  SMTP_PORT=465 <br />
-  MAIL_ADDRESS= your email address <br />
-  MAIL_PASSWORD= your email's password <br />
-  SERVICE_NAME= Your business name  <br />
-`
+`  BROKER=redis://localhost:6379`   <br />
+  `SECRET= a secret that is shared between you and your service` <br />
+  `SMTP_SERVER=smtp.hostinger.com `<br />
+  `SMTP_PORT=465 `<br />
+  `MAIL_ADDRESS= your email address` <br />
+  `MAIL_PASSWORD= your email's password `<br />
+  `SERVICE_NAME= Your business name`  <br />
 4) Run!<br />
 ` python -m app `  <br />
 
