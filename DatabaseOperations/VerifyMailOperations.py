@@ -5,20 +5,24 @@ class VerifyMailOperations(Base):
     def __init__(self):
         super().__init__("verifyMailService")
 
-    
     def store_mail_data_for_verification(self, email, ip_addr, code):
-        self._db.hset(email,mapping={
-            "email": email,
-            "ip_address": ip_addr,
-            "code": code
-        })
-    
-    def verify_mail_data_for_verification(self,email, code):
-        data = self._db.hget(email)
-        if data is not None and data.get("code") == code:
-            return True
-        return False
+        self._db.hset(
+            email, mapping={"email": email, "ip_address": ip_addr, "code": code}
+        )
+        self._db.expire(email, 60 * 15)
 
-
-
-
+    def verify_mail_data_for_verification(self, email, code):
+        data = self._db.hget(email, key="code")
+        print("WTF!")
+        print(data)
+        
+        if data is None:
+            return {"msg": "Code Expired", "verification_status": False}
+        data = data.decode()
+        print(data)
+        if data is not None and data == code:
+            resp = self._db.delete(email)
+            print("WTF!")
+            print(resp)
+            return {"msg": "Code Verified", "verification_status": True}
+        return {"msg": "Incorrect Code", "verification_status": False}
