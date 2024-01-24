@@ -2,7 +2,6 @@ from flask import Flask, request
 from DatabaseOperations.VerifyMailOperations import VerifyMailOperations
 from MailService.VerifyMail import VerifyMail
 from random import randint
-from time import sleep
 import traceback
 import os
 from dotenv import load_dotenv
@@ -30,7 +29,6 @@ def sendMagic():
 
     try:
         code = randint(10000, 99999)
-        sleep(1)
         vOperations = VerifyMailOperations()
         vOperations.store_mail_data_for_verification(
             email=to_email, ip_addr=ip_addr, code=code
@@ -59,7 +57,6 @@ def verifyCode():
     if access_key != os.getenv("SECRET"):
         return {"msg": "Invalid Access Key", "verification_status": False}
 
-    sleep(1)
     resp = VerifyMailOperations().verify_mail_data_for_verification(
         email=email, code=code
     )
