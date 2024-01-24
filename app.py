@@ -17,7 +17,7 @@ def health():
     return {}
 
 
-@app.route("/sendMagic", methods=["POST"])
+@app.route("/send-verification-mail", methods=["POST"])
 def sendMagic():
     payload = request.json
     to_email: str = payload.get("email")
@@ -46,7 +46,7 @@ def sendMagic():
         return {"error": True, "msg": "Something went wrong"}
 
 
-@app.route("/verifyCode", methods=["POST"])
+@app.route("/verify-code", methods=["POST"])
 def verifyCode():
     payload = request.json
 
